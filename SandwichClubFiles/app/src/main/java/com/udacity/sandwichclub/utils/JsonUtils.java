@@ -1,5 +1,6 @@
 package com.udacity.sandwichclub.utils;
 
+import com.udacity.sandwichclub.R;
 import com.udacity.sandwichclub.model.Sandwich;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,10 +15,24 @@ public class JsonUtils {
         Sandwich san = new Sandwich();
         JSONObject details = new JSONObject(json);
         JSONObject name = details.getJSONObject("name");
-        san.setMainName(name.getString("mainName"));
-        san.setPlaceOfOrigin(details.getString("placeOfOrigin"));
-        san.setDescription(details.getString("description"));
-        san.setImage(details.getString("image"));
+        if(!name.getString("mainName").equals(""))
+            san.setMainName(name.getString("mainName"));
+        else
+            san.setMainName("*Unknown*");
+
+        if(!details.getString("placeOfOrigin").equals(""))
+            san.setPlaceOfOrigin(details.getString("placeOfOrigin"));
+        else
+            san.setPlaceOfOrigin("*Unknown*");
+
+        if(!details.getString("description").equals(""))
+            san.setDescription(details.getString("description"));
+        else
+            san.setDescription("*Unknown*");
+        if(!details.getString("image").equals(""))
+            san.setImage(details.getString("image"));
+        else
+            san.setImage("Missing Image");
 
         ArrayList<String> nicknamesList = new ArrayList<String>();
         ArrayList<String> ingredientsList = new ArrayList<String>();

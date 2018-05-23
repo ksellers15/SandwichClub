@@ -73,8 +73,16 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich s) {
         originTv.setText(s.getPlaceOfOrigin());
-        alsoKnownAsTv.setText(s.getAlsoKnownAs().toString());
-        ingredientsTv.setText(s.getIngredients().toString());
+        descriptionTv.setText(s.getDescription());
+
+        if (s.getAlsoKnownAs().toString() != "[]")
+            alsoKnownAsTv.setText(s.getAlsoKnownAs().toString());
+        else
+            alsoKnownAsTv.setText("*Unknown*");
+        if (s.getIngredients().toString() != "[]")
+            ingredientsTv.setText(s.getIngredients().toString());
+        else
+            ingredientsTv.setText("*Unknown*");
         descriptionTv.setText(s.getDescription());
     }
 }
