@@ -83,6 +83,5 @@ public class DetailActivity extends AppCompatActivity {
             ingredientsTv.setText(s.getIngredients().toString());
         else
             ingredientsTv.setText("*Unknown*");
-        descriptionTv.setText(s.getDescription());
     }
 }
