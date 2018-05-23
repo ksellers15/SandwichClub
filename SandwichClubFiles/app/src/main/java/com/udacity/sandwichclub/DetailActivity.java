@@ -73,8 +73,8 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich s) {
         originTv.setText(s.getPlaceOfOrigin());
-//        alsoKnownAsTv.setText(s.getAlsoKnownAs().toString());
-//        ingredientsTv.setText(s.getIngredients().toString());
+        alsoKnownAsTv.setText(s.getAlsoKnownAs().toString());
+        ingredientsTv.setText(s.getIngredients().toString());
         descriptionTv.setText(s.getDescription());
     }
 }
