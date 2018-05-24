@@ -3,15 +3,15 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
-
 import org.json.JSONException;
+import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -74,14 +74,14 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI(Sandwich s) {
         originTv.setText(s.getPlaceOfOrigin());
         descriptionTv.setText(s.getDescription());
+        setTextList(alsoKnownAsTv, s.getAlsoKnownAs());
+        setTextList(ingredientsTv, s.getIngredients());
+    }
 
-        if (s.getAlsoKnownAs().toString() != "[]")
-            alsoKnownAsTv.setText(s.getAlsoKnownAs().toString());
+    private void setTextList(TextView text, List<String> list){
+        if(list.toString() != "[]")
+            text.setText(TextUtils.join(", ", list));
         else
-            alsoKnownAsTv.setText("*Unknown*");
-        if (s.getIngredients().toString() != "[]")
-            ingredientsTv.setText(s.getIngredients().toString());
-        else
-            ingredientsTv.setText("*Unknown*");
+            text.setText(R.string.missing_data);
     }
 }

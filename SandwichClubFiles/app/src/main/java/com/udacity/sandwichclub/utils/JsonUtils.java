@@ -1,11 +1,11 @@
 package com.udacity.sandwichclub.utils;
 
-import com.udacity.sandwichclub.R;
 import com.udacity.sandwichclub.model.Sandwich;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
+
 
 public class JsonUtils {
 
@@ -32,10 +32,10 @@ public class JsonUtils {
         if(!details.getString("image").equals(""))
             san.setImage(details.getString("image"));
         else
-            san.setImage("Missing Image");
+            san.setImage("https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg");
 
-        ArrayList<String> nicknamesList = new ArrayList<String>();
-        ArrayList<String> ingredientsList = new ArrayList<String>();
+        ArrayList<String> nicknamesList = new ArrayList<>();
+        ArrayList<String> ingredientsList = new ArrayList<>();
         JSONArray nicknamesArray = name.getJSONArray("alsoKnownAs");
         JSONArray ingredientsArray = details.getJSONArray("ingredients");
         for(int i =0; i< nicknamesArray.length(); i++){
